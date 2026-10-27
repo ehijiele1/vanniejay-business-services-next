@@ -15,10 +15,7 @@
 - **2026-10-28** – Updated `globals.css` to use Inter font variable for sans and mono.
 
 ---
-- **2026-10-28** – Added `public/hero-desktop.svg` (brand hero asset).
-- **2026-10-28** – Created `src/components/FeaturedHero.tsx` to render the brand hero with CTA buttons.
-- **2026-10-28** – Updated home page (`src/app/page.tsx`) to use `FeaturedHero`.
-- **2026-10-28** – Added `src/utils/og.ts` and route `src/app/api/og/route.ts` for dynamic OpenGraph images.
+- **2026-10-28** – Design System basics (Tailwind config, brand colors, fonts, hero component, OG route) are in place. Next steps: generate shadcn‑ui component library and refine layout per 8‑point grid.
 ---
 
 **Next Phase**: Design System & Branding Tokens (Phase 2) – see `DELIVERY_CONTRACT.yml` for detailed sub‑tasks.
