@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 180">
+<rect width="760" height="180" fill="#FFFFFF"/>
+<g transform="translate(34 28) scale(.95)" fill="#111111">
+<path d="M36 0 L9 21 V108 H0 V111 H28 V36 L36 29 Z"/>
+<path d="M44 0 V29 L52 36 V111 H80 V108 H71 V21 Z"/>
+</g>
+<line x1="145" y1="38" x2="145" y2="142" stroke="#777777" stroke-width="1"/>
+<text x="190" y="90" font-family="Inter,Arial,sans-serif" font-size="45" font-weight="500" letter-spacing="13" fill="#111111">VANNIEJAY</text>
+<text x="193" y="125" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="500" letter-spacing="6" fill="#C8A24A">THE GATEWAY TO OPPORTUNITY</text>
+</svg>

@@ -1,0 +1,57 @@
+DELIVERY_CONTRACT:
+  task_id: "TASK-2026-001"
+  agreed_delivery:
+    target_feature: "Full MVP of VannieJay Business Services site + resilient social‑media automation"
+    subtask_chunks:
+      - id: 0
+        description: "Discovery, clarification, and contract signing"
+        ownership: "HUMAN-OWNED"
+      - id: 1
+        description: "Project bootstrap (worktree, git, Next.js, UI libs, CI)"
+        ownership: "AGENT-OWNED"
+      - id: 2
+        description: "Design system & branding tokens (tailwind, fonts, icons, OG helper)"
+        ownership: "AGENT-OWNED"
+      - id: 3
+        description: "Core website features (schema, pages, lead form, SEO, blog, featured‑project hero)"
+        ownership: "AGENT-OWNED"
+      - id: 4
+        description: "Social‑media posting engine (queues, workers, logs, token health, admin UI, CrewAI drafts)"
+        ownership: "AGENT-OWNED"
+      - id: 5
+        description: "AI chatbot & WhatsApp Business integration (webhooks, price‑update parser)"
+        ownership: "AGENT-OWNED"
+      - id: 6
+        description: "QA, accessibility, performance testing, load testing of the worker"
+        ownership: "AGENT-OWNED"
+      - id: 7
+        description: "Production deployment to Vercel, documentation (README, PROGRESS, RELEASE_NOTES)"
+        ownership: "AGENT-OWNED"
+    acceptance_criteria:
+      - "npm install && npm run dev starts the site locally without errors."
+      - "All UI respects 8‑point grid, 60‑30‑10 colour rule, and passes WCAG AA."
+      - "Lead form persists data to Supabase and triggers a Slack webhook."
+      - "Featured‑project hero appears on Home and can be toggled from admin."
+      - "Admin dashboard can create/edit a post, select channels, schedule, and push to queue."
+      - "Publish‑post worker logs full request/response, isolates failures, and retries up to 3×."
+      - "Token‑health monitor sends an alert if any OAuth token expires."
+      - "Chat widget works on every page and stores session data in Supabase."
+      - "WhatsApp webhook updates product pricing in real time when a message follows `#price <id> <new‑price>`."
+      - "Vercel production build passes Lighthouse ≥ 90 and all accessibility checks."
+  constraints_and_guardrails:
+    - "Never copy or modify any file from the legacy repository."
+    - "All secrets (Supabase service role key, social‑media tokens) must be stored only in environment variables; never committed."
+    - "Only free tiers of tools may be used (Next.js, Supabase free tier, GitHub Actions, OpenAI free‑tier, WhatsApp Cloud API)."
+    - "Design must follow DESIGN.md rules: 8‑point grid, 4‑size typography, monospace for numbers, lucide-react icons only."
+    - "Privacy: collect name, phone, email; store in Supabase with encryption at rest; include GDPR‑style consent checkbox for Nigerian/CCPA compliance."
+    - "OpenGraph images must be ≤ 1 MB and hosted in Supabase Storage."
+    - "OAuth flow must be used for every platform that supports it; otherwise provide placeholder env var with clear instructions."
+  proof_artifacts_required:
+    - "Git diff stat summary for each phase."
+    - "CI run logs (npm test, lint, build)."
+    - "Axe‑core accessibility report (JSON)."
+    - "Lighthouse report (HTML)."
+    - "Sample automation log entry for a successful post and a failed post."
+    - "Chatbot webhook request/response example."
+    - "WhatsApp webhook payload example and price‑update DB change."
+  external_verification_route: "Manual review of PROGRESS.md + automated CI artifacts"
