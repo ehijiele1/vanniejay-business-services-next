@@ -15,7 +15,7 @@
 - **2026-10-28** – Updated `globals.css` to use Inter font variable for sans and mono.
 
 ---
-- **2026-10-28** – Design System basics (Tailwind config, brand colors, fonts, hero component, OG route) are in place. Next steps: generate shadcn‑ui component library and refine layout per 8‑point grid.
+- **2026-10-28** – Design System basics (Tailwind config, brand colors, fonts, hero component, OG route) are in place. UI components added; layout refinement pending.
 ---
 
 **Next Phase**: Design System & Branding Tokens (Phase 2) – see `DELIVERY_CONTRACT.yml` for detailed sub‑tasks.
