@@ -11,15 +11,17 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: any) {
-  const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${params.slug}.md`);
+  const { slug } = await params;
+  const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${slug}.md`);
   if (!fs.existsSync(filePath)) return { title: 'Post not found' };
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data } = matter(fileContents);
-  return { title: data.title ?? params.slug };
+  return { title: data.title ?? slug };
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${params.slug}.md`);
+export default async function BlogPost({ params }: any) {
+  const { slug } = await params;
+  const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${slug}.md`);
   if (!fs.existsSync(filePath)) notFound();
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { content } = matter(fileContents);
