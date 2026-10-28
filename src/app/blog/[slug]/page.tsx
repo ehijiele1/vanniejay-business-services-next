@@ -10,7 +10,7 @@ export async function generateStaticParams() {
   return filenames.map((filename) => ({ slug: filename.replace(/\.md$/, '') }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: any) {
   const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${params.slug}.md`);
   if (!fs.existsSync(filePath)) return { title: 'Post not found' };
   const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return { title: data.title ?? params.slug };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost(props: any) {
   const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${params.slug}.md`);
   if (!fs.existsSync(filePath)) notFound();
   const fileContents = fs.readFileSync(filePath, 'utf8');

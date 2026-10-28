@@ -10,7 +10,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
     const { data, error } = await supabase
-      .from<Lead>('leads')
+      .from('leads')
       .insert({ name, email, phone, message })
       .select()
       .single();

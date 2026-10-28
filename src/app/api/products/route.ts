@@ -4,7 +4,7 @@ import type { Product } from '@/types/supabase';
 
 export async function GET() {
   const { data, error } = await supabase
-    .from<Product>('products')
+    .from('products')
     .select('*')
     .order('created_at', { ascending: false });
 

@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   const slug = searchParams.get('slug');
   if (!slug) return NextResponse.json({ error: 'Missing slug' }, { status: 400 });
   const { data, error } = await supabase
-    .from<BlogPost>('blog_posts')
+    .from('blog_posts')
     .select('*')
     .eq('slug', slug)
     .single();
@@ -22,7 +22,7 @@ export async function PUT(request: Request) {
   const payload = await request.json();
   const { title, content } = payload;
   const { data, error } = await supabase
-    .from<BlogPost>('blog_posts')
+    .from('blog_posts')
     .update({ title, content })
     .eq('slug', slug)
     .select()

@@ -2,8 +2,7 @@ import React from 'react';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import './globals.css';
-import { initAnalytics } from '@/lib/analytics';
-import { useEffect } from 'react';
+import AnalyticsInit from '@/components/AnalyticsInit';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,14 +16,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    initAnalytics();
-  }, []);
   return (
     <html
       lang="en"
       className={`${inter.variable} h-full antialiased`}
     >
+      <AnalyticsInit />
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

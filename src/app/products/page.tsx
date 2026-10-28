@@ -1,4 +1,5 @@
-import useSWR from 'swr';
+"use client";
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card } from '@/components/ui/Card';
@@ -16,9 +17,18 @@ interface Product {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function ProductsPage() {
-  const { data, error, isLoading } = useSWR<Product[]>('/api/products', fetcher);
+  const [data, setData] = useState<Product[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  if (isLoading) {
+  useEffect(() => {
+    fetcher('/api/products')
+      .then((res) => setData(res))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
     return (
       <section className="max-w-5xl mx-auto py-12 px-4 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {[...Array(6)].map((_, i) => (

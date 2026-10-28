@@ -9,7 +9,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Missing id' }, { status: 400 });
   }
   const { data, error } = await supabase
-    .from<Product>('products')
+    .from('products')
     .select('*')
     .eq('id', id)
     .single();
