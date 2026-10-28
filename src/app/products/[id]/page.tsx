@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { supabase } from '@/lib/supabase';
 import type { Product } from '@/types/supabase';
 
-export default function ProductDetail({ params }: { params: { id: string } }) {
+export default function ProductDetail({ params }: any) {
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();

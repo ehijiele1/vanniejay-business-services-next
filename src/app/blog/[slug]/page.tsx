@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: any) {
   return { title: data.title ?? params.slug };
 }
 
-export default async function BlogPost(props: any) {
+export default async function BlogPost({ params }: { params: { slug: string } }) {
   const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${params.slug}.md`);
   if (!fs.existsSync(filePath)) notFound();
   const fileContents = fs.readFileSync(filePath, 'utf8');
